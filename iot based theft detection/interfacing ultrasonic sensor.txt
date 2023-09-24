@@ -1,0 +1,19 @@
+//arduino IDE new sketch file
+#include <Ultrasonic.h>
+const int trigPin = 12;
+const int echoPin = 11;
+Ultrasonic ultrasonic(trigPin, echoPin);
+Serial.begin(9600);
+pinMode(9, OUTPUT);
+long distance = ultrasonic.distance();
+if (distance < 20) {
+  digitalWrite(9, HIGH);
+  Serial.println("Distance: " + String(distance) + " cm");
+} else {
+  digitalWrite(9, LOW);
+}
+Serial.flush();
+delay(100);
+
+
+
